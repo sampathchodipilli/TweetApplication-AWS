@@ -2,6 +2,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION: "ap-south-1"
+    DOCKER_REGISTRY: "public.ecr.aws/q4m2j8z0"
 
 phases:
   pre_build:
@@ -9,6 +10,7 @@ phases:
       - echo prebuild
       - export password=$(aws ecr get-login-password --region $AWS_REGION)
       - echo $password
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/q4m2j8z0
   build:
     commands:
       - echo build
