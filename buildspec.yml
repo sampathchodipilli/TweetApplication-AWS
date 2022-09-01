@@ -10,9 +10,9 @@ phases:
     commands:
       - echo prebuild
       # - export password=$(aws ecr get-login-password --region $AWS_REGION)
-      - echo $password
-      # - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/q4m2j8z0
-      - docker login -u AWS -p $TOKEN $DOCKER_REGISTRY
+      # - echo $password
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/q4m2j8z0
+      # - docker login -u AWS -p $TOKEN $DOCKER_REGISTRY
   build:
     commands:
       - echo build
